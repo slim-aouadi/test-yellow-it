@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Quick Example</h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form  [formGroup]="newTeacherForm">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">FirstName</label>
+                    <input formControlName="firstName" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter FirstName">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">LastName</label>
+                    <input formControlName="lastName" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter LastName">
+                  </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <!--/.col (left) -->
+      <!-- right column -->
+     
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
