@@ -56,6 +56,42 @@ class TeacherController extends AbstractController
         return new JsonResponse($users, 200);
     }
 
+     /**
+     * @Route("/teacher-details/{id}", methods={"GET"})
+     */
+    public function fetchTeacherDetails(Request $request,int $id): Response
+    {
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+        $em = $this->getDoctrine()->getManager();
+        $teacher = $em->getRepository(User::class)->find($id);
+        return new Response($serializer->serialize($teacher, 'json'));
+    }
+
+
+    
+     /**
+     * @Route("/update-teacher/{id}", methods={"PUT"})
+     */
+    public function updateTeacher(int $id,Request $request): Response
+    {
+        $requestBody = json_decode($request->getContent(), true);
+        $entityManager = $this->getDoctrine()->getManager();
+        $teacher = $entityManager->getRepository(User::class)->find($id);
+        $teacher->setFirstName($requestBody['firstName']);
+        $teacher->setLastName($requestBody['lastName']);
+        $teacher->setEmail($requestBody['email']);
+        $teacher->setUsername($requestBody['firstName'].$requestBody['lastName']);
+        $teacher->setUsernameCanonical($requestBody['firstName'].$requestBody['lastName']);
+
+        $entityManager->flush();
+
+        return $this->json(
+            "UPDATED"
+        );
+    }
+
 
      /**
      * @Route("/remove-teacher/{id}", methods={"DELETE"})

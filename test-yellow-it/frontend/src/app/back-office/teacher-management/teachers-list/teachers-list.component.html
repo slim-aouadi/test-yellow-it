@@ -7,7 +7,7 @@
       <div *ngFor="let teacher of listTeachers" class="col-md-4">
         <!-- Widget: user widget style 1 -->
         <i  (click)="removeTeacher(teacher.id)" class="fa fa-window-close" aria-hidden="true"></i>
-        <div class="card card-widget widget-user">
+        <div class="card card-widget widget-user" (click)="editTeacher(teacher.id)">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header bg-info">
             <h3 class="widget-user-username">{{teacher.firstName}} {{teacher.lastName}}</h3>

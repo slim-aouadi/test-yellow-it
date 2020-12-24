@@ -27,8 +27,17 @@ export class TeacherService {
         return this.http.get(API_URL + 'teachers-list');
     }
 
+    fetchTeacherDetails(id): Observable<any> {
+        return this.http.get(API_URL + 'teacher-details/' + id);
+    }
+
     removeTeacher(id): Observable<any> {
         return this.http.delete(API_URL + 'remove-teacher/' + id);
+    }
+
+
+    updateTeacherDetails(updatedTeacher): Observable<any> {
+        return this.http.put(API_URL + 'update-teacher/' + updatedTeacher.id, updatedTeacher, httpOptions);
     }
 
 

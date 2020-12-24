@@ -7,6 +7,7 @@ import { ClassesListComponent } from './classe-management/classes-list/classes-l
 import { EditClasseComponent } from './classe-management/edit-classe/edit-classe.component';
 import { HomeComponent } from './home/home.component';
 import { AddTeacherComponent } from './teacher-management/add-teacher/add-teacher.component';
+import { EditTeacherComponent } from './teacher-management/edit-teacher/edit-teacher.component';
 import { TeachersListComponent } from './teacher-management/teachers-list/teachers-list.component';
 
 
@@ -33,6 +34,12 @@ export const BackOfficeRoutes: Routes = [
             },
             {
                 path: 'teachers-list', component: TeachersListComponent, canActivateChild: [AuthGuard],
+                data: {
+                    authorities: ['ROLE_USER', 'ROLE_ADMIN'],
+                }
+            },
+            {
+                path: 'edit-teacher/:id', component: EditTeacherComponent, canActivateChild: [AuthGuard],
                 data: {
                     authorities: ['ROLE_USER', 'ROLE_ADMIN'],
                 }

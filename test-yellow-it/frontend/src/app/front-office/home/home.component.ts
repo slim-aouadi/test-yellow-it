@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   redirectToDashboard() {
-    this.router.navigate(['/dashboard']);
+    window.location.href = "/dashboard";
   }
 
 }

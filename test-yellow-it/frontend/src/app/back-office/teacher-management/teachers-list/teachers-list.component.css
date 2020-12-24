@@ -7,3 +7,7 @@
   position: relative;
   transform: scale(1.5);
 }
+
+.widget-user {
+  cursor: pointer !important;
+}

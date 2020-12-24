@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TeacherService } from 'src/app/services/teacher/teacher.service';
 export class TeachersListComponent implements OnInit {
 
   listTeachers: any = [];
-  constructor(private teacherService: TeacherService) {
+  constructor(private router: Router, private teacherService: TeacherService) {
     this.teacherService.fetchAllTeachers().subscribe(data => {
       this.listTeachers = data;
     })
@@ -24,6 +25,10 @@ export class TeachersListComponent implements OnInit {
       let index = this.listTeachers.findIndex(obj => obj.id === id)
       this.listTeachers.splice(index, 1);
     })
+  }
+
+  editTeacher(id) {
+    this.router.navigate(['dashboard/edit-teacher/' + id]);
   }
 
 }
