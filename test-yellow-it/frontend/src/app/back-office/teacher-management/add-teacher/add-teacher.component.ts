@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TeacherService } from 'src/app/services/teacher/teacher.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { TeacherService } from 'src/app/services/teacher/teacher.service';
 export class AddTeacherComponent implements OnInit {
 
   newTeacherForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private teacherService: TeacherService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private teacherService: TeacherService) { }
 
   ngOnInit() {
     this.newTeacherForm = this.formBuilder.group({
@@ -25,7 +26,7 @@ export class AddTeacherComponent implements OnInit {
     if (this.newTeacherForm.valid) {
       let teacher = this.newTeacherForm.value
       this.teacherService.addNewTeacher(teacher).subscribe(data => {
-        console.log(data);
+        this.router.navigate(['dashboard/teachers-list']);
       })
 
     }

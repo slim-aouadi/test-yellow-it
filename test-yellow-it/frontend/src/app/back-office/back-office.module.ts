@@ -15,9 +15,10 @@ import { ClassesListComponent } from './classe-management/classes-list/classes-l
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AffectTeacherComponent } from './classe-management/add-classe/affect-teacher/affect-teacher.component';
 import { MatAutocompleteModule, MatDialogModule } from '@angular/material';
+import { EditClasseComponent } from './classe-management/edit-classe/edit-classe.component';
 
 @NgModule({
-  declarations: [BackOfficeComponent, AddTeacherComponent, TeachersListComponent, AddClasseComponent, ClassesListComponent, DashboardSidebarComponent, HomeComponent, AffectTeacherComponent],
+  declarations: [BackOfficeComponent, AddTeacherComponent, TeachersListComponent, AddClasseComponent, ClassesListComponent, DashboardSidebarComponent, HomeComponent, AffectTeacherComponent, EditClasseComponent],
   imports: [
     RouterModule.forChild(BackOfficeRoutes),
     CommonModule,

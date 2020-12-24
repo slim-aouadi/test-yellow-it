@@ -1,0 +1,9 @@
+.fa-window-close {
+  color: red !important;
+  cursor: pointer;
+  float: right;
+  top: -8px;
+  z-index: 1;
+  position: relative;
+  transform: scale(1.5);
+}

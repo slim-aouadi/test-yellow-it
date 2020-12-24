@@ -11,13 +11,19 @@ export class TeachersListComponent implements OnInit {
   listTeachers: any = [];
   constructor(private teacherService: TeacherService) {
     this.teacherService.fetchAllTeachers().subscribe(data => {
-      console.log(data)
       this.listTeachers = data;
     })
   }
 
   ngOnInit() {
 
+  }
+
+  removeTeacher(id) {
+    this.teacherService.removeTeacher(id).subscribe(data => {
+      let index = this.listTeachers.findIndex(obj => obj.id === id)
+      this.listTeachers.splice(index, 1);
+    })
   }
 
 }

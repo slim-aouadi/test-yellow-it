@@ -28,6 +28,19 @@ export class ClasseService {
         return this.http.get(API_URL + 'classes-list');
     }
 
+    fetchClasseDetails(idClasse): Observable<any> {
+        return this.http.get(API_URL + 'classe-details/' + idClasse);
+    }
+
+    updateClasseDetails(updatedClasse): Observable<any> {
+        return this.http.put(API_URL + 'update-classe/' + updatedClasse.id, updatedClasse, httpOptions);
+    }
+
+    removeClasse(id): Observable<any> {
+        return this.http.delete(API_URL + 'remove-classe/' + id);
+    }
+
+
 
 
 }

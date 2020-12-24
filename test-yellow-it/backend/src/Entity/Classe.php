@@ -90,4 +90,12 @@ class Classe
 
         return $this;
     }
+
+    
+    public function clearUserClass()
+    {
+        $this->getUserClasses()->clear();
+    }
+
+    
 }
