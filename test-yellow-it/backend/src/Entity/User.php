@@ -33,16 +33,11 @@ class User extends BaseUser
     private $lastName;
 
 
-     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Classe", inversedBy="teachers")
-     */
-    private $classes;
-
     public function __construct()
     {
         parent::__construct();
         // your own logic
-        $this->classes = new ArrayCollection();
+        //$this->classes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,30 +65,6 @@ class User extends BaseUser
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Classe[]
-     */
-    public function getClasses(): Collection
-    {
-        return $this->classes;
-    }
-
-    public function addClasses(Classe $classes): self
-    {
-        if (!$this->classes->contains($classes)) {
-            $this->classes[] = $classes;
-        }
-
-        return $this;
-    }
-
-    public function removeClasses(Classe $classes): self
-    {
-        $this->classes->removeElement($classes);
 
         return $this;
     }

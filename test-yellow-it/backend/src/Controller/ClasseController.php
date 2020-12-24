@@ -11,7 +11,7 @@ use App\Entity\Classe;
 use App\Entity\User;
 
 /**
-* @Route("/classe", name="classe")
+* @Route("/api/classe", name="classe")
 */
 class ClasseController extends AbstractController
 {

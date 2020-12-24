@@ -27,13 +27,39 @@ class Classe
     private $name;
 
      /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="classe")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     * @ORM\JoinTable(name="user_classe",
+     *          joinColumns={@ORM\JoinColumn(name="classe_id",referencedColumnName="id")},
+     *          inverseJoinColumns={@ORM\JoinColumn(name="user_id",referencedColumnName="id")}
+     * )
      */
-    private $teachers;
+    private $userClasses;
 
     public function __construct()
     {
-        $this->teachers = new ArrayCollection();
+        $this->userClasses = new ArrayCollection();
+    }
+
+
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -41,46 +67,27 @@ class Classe
         return $this->id;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     /**
      * @return Collection|User[]
      */
-    public function getTeachers(): Collection
+    public function getUserClasses(): Collection
     {
-        return $this->teachers;
+        return $this->userClasses;
     }
 
-    public function addTeachers(User $teacher): self
+    public function addUserClass(User $userClass): self
     {
-        if (!$this->teachers->contains($teacher)) {
-            $this->teachers[] = $teacher;
-            $teacher->addClasses($this);
+        if (!$this->userClasses->contains($userClass)) {
+            $this->userClasses[] = $userClass;
         }
 
         return $this;
     }
 
-    public function removeTeachers(User $teacher): self
+    public function removeUserClass(User $userClass): self
     {
-        if ($this->teachers->removeElement($teacher)) {
-            $teacher->removeClasses($this);
-        }
+        $this->userClasses->removeElement($userClass);
 
         return $this;
     }
-
-
-
-
 }
